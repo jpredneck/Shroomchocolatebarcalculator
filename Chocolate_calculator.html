@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dreamy Chocolate Bar Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+    h1 {
+      color: #6e44ff;
+    }
+    .container {
+      margin: 0 auto;
+      width: 50%;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #6e44ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #7f4dff;
+    }
+    #results {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dreamy Chocolate Bar Calculator</h1>
+    <label for="size">Desired Size of Chocolate Bar (grams):</label>
+    <input type="text" id="size">
+    <label for="maxPowder">Maximum Allowable Percentage of Mushroom Powder:</label>
+    <input type="text" id="maxPowder">
+    <label for="desiredPotency">Desired Potency of Chocolate Bar (%):</label>
+    <input type="text" id="desiredPotency">
+    <button onclick="calculate()">Calculate</button>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    function calculate() {
+      var size = parseFloat(document.getElementById('size').value);
+      var maxPowder = parseFloat(document.getElementById('maxPowder').value);
+      var desiredPotency = parseFloat(document.getElementById('desiredPotency').value);
+
+      var chocolateWafers = size;
+      var maxPowderAmount = (size / 2.25) * maxPowder;
+      var powderNeeded = (desiredPotency / 100) * size;
+
+      if (maxPowderAmount >= powderNeeded) {
+        document.getElementById('results').innerHTML = "You're good to go! 🍫";
+      } else {
+        document.getElementById('results').innerHTML = "Oops! Too much mushroom powder. 🍄";
+      }
+    }
+  </script>
+</body>
+</html>
