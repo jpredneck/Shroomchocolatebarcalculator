@@ -1,6 +1,7 @@
+
 # Project Name - Shroom Chocolate Bar Calculator
 
-## Description - Taking the mystery out of how many Garabaldi Chocolate Wafers and Powdered Shrooms you need for a cholcate mold based on potency in grams
+## Description - Taking the mystery out of how many Ghirardelli MILK CHOCOLATE FLAVORED MELTING WAFERS and Powdered Shrooms you need for a cholcate mold based on potency in grams
 
 This project is a...
 
