@@ -3,75 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dreamy Chocolate Bar Calculator</title>
+  <title>Trippy Chocolate Shroom Bar Calculator</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      color: #fff;
       text-align: center;
-    }
-    h1 {
-      color: #6e44ff;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .container {
-      margin: 0 auto;
-      width: 50%;
+      width: 80%;
+      max-width: 500px;
       padding: 20px;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.3);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    input[type="number"] {
+      width: calc(100% - 22px);
+      padding: 8px;
+      margin: 5px 0 20px 0;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 1px solid #fff;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #000;
     }
     button {
       padding: 10px 20px;
-      background-color: #6e44ff;
+      background-color: #ff00ff;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #7f4dff;
+      background-color: #00ffff;
     }
     #results {
       margin-top: 20px;
       font-weight: bold;
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Dreamy Chocolate Bar Calculator</h1>
-    <label for="size">Desired Size of Chocolate Bar (grams):</label>
-    <input type="text" id="size">
-    <label for="maxPowder">Maximum Allowable Percentage of Mushroom Powder:</label>
-    <input type="text" id="maxPowder">
-    <label for="desiredPotency">Desired Potency of Chocolate Bar (%):</label>
-    <input type="text" id="desiredPotency">
-    <button onclick="calculate()">Calculate</button>
+    <h1>Trippy Chocolate Shroom Bar Calculator</h1>
+    <label for="mushroomPowder">Grams of Magic Mushroom Powder:</label>
+    <input type="number" id="mushroomPowder">
+    <label for="length">Length (inches):</label>
+    <input type="number" id="length">
+    <label for="width">Width (inches):</label>
+    <input type="number" id="width">
+    <label for="depth">Depth (inches):</label>
+    <input type="number" id="depth">
+    <button onclick="calculate()">Enter the Chocolate Wonderland</button>
     <div id="results"></div>
   </div>
 
   <script>
     function calculate() {
-      var size = parseFloat(document.getElementById('size').value);
-      var maxPowder = parseFloat(document.getElementById('maxPowder').value);
-      var desiredPotency = parseFloat(document.getElementById('desiredPotency').value);
+      var mushroomPowder = parseFloat(document.getElementById('mushroomPowder').value);
+      var lengthInches = parseFloat(document.getElementById('length').value);
+      var widthInches = parseFloat(document.getElementById('width').value);
+      var depthInches = parseFloat(document.getElementById('depth').value);
 
-      var chocolateWafers = size;
-      var maxPowderAmount = (size / 2.25) * maxPowder;
-      var powderNeeded = (desiredPotency / 100) * size;
+      // Convert inches to centimeters (1 inch = 2.54 cm)
+      var lengthCm = lengthInches * 2.54;
+      var widthCm = widthInches * 2.54;
+      var depthCm = depthInches * 2.54;
 
-      if (maxPowderAmount >= powderNeeded) {
-        document.getElementById('results').innerHTML = "You're good to go! 🍫";
+      var volumeCm3 = lengthCm * widthCm * depthCm; // Volume of the chocolate mold in cm³
+      var maxMushroomPowder = volumeCm3 * 0.1; // Maximum allowable grams of mushroom powder (10% of volume)
+      
+      var chocolateWafers = Math.ceil(volumeCm3 / 2.25) + 1; // Number of chocolate wafers needed (rounding up) plus one extra
+
+      // Calculate 1% cocoa butter by total weight in grams of the chocolate wafers
+      var cocoaButter = Math.ceil(chocolateWafers * 0.01);
+
+      if (mushroomPowder > maxMushroomPowder) {
+        document.getElementById('results').innerHTML = "Whoa! Slow down! Your magic mushroom powder exceeds 10% of the volume. Take a deep breath and reconsider your chocolate adventure.";
       } else {
-        document.getElementById('results').innerHTML = "Oops! Too much mushroom powder. 🍄";
+        var message = "You need " + chocolateWafers + " chocolate wafers to fill the mold. And hey, just for luck, we added an extra wafer! Don't forget to add " + cocoaButter + " grams of cocoa butter for that creamy chocolate goodness.";
+        document.getElementById('results').innerHTML = message;
       }
     }
   </script>
